@@ -160,6 +160,43 @@ button:hover{
     }
 }
 
+.pin-container{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.pin{
+    width:55px;
+    height:60px;
+    border-radius:16px;
+    border:2px solid #ddd;
+    font-size:24px;
+    text-align:center;
+    transition:0.2s;
+}
+
+.pin:focus{
+    outline:none;
+    border-color:#ff4d88;
+    box-shadow:0 0 10px rgba(255,77,136,0.3);
+}
+
+/* shake animation */
+
+.shake{
+    animation:shake 0.4s;
+}
+
+@keyframes shake{
+    0%{transform:translateX(0);}
+    25%{transform:translateX(-5px);}
+    50%{transform:translateX(5px);}
+    75%{transform:translateX(-5px);}
+    100%{transform:translateX(0);}
+}
+
 </style>
 </head>
 
@@ -172,9 +209,18 @@ button:hover{
 
 <h1>🔒 หน้าลับ</h1>
 
-<p class="hint"> คำใบ้: วันครบรอบ 💗</p>
+<p class="hint"> คำใบ้: วันครบรอบ - ปีคศนะ 💌</p>
 
-<input type="password" id="password" placeholder="ใส่รหัสที่นี่">
+<div class="pin-container">
+  <input class="pin" maxlength="1">
+  <input class="pin" maxlength="1">
+  <input class="pin" maxlength="1">
+  <input class="pin" maxlength="1">
+  <input class="pin" maxlength="1">
+  <input class="pin" maxlength="1">
+  <input class="pin" maxlength="1">
+  <input class="pin" maxlength="1">
+</div>
 
 <button onclick="checkPassword()">เข้าสู่หน้าลับ</button>
 
@@ -209,21 +255,99 @@ button:hover{
 
 <script>
 
-function checkPassword(){
+const pins = document.querySelectorAll(".pin")
+const correctPassword = "14022026"
 
-const correctPassword="14022026"
-const input=document.getElementById("password").value
+pins.forEach((pin, index) => {
 
-if(input===correctPassword){
-    document.getElementById("login").style.display="none"
-    document.getElementById("secretPage").style.display="block"
- } else{
-    document.getElementById("error").style.display="block"
+  // พิมพ์ตัวเลข
+  pin.addEventListener("input", (e) => {
+
+    const value = e.target.value
+
+    if(!/^[0-9]$/.test(value)){
+      e.target.value = ""
+      return
     }
+
+    // แสดงหัวใจ
+    e.target.value = "♡"
+    e.target.dataset.value = value
+
+    // ไปช่องถัดไป
+    if(index < pins.length - 1){
+      pins[index+1].focus()
+    }
+
+    checkPassword()
+
+  })
+
+  // รองรับการกดลบ
+  pin.addEventListener("keydown", (e) => {
+    if(e.key === "Backspace"){
+      if(pin.value === "" && index > 0){
+        pins[index-1].focus()
+        pins[index-1].value = ""
+        delete pins[index-1].dataset.value
+      }else{
+        pin.value = ""
+        delete pin.dataset.value
+      }
+    }
+  })
+})
+
+function getPassword(){
+  let pass = ""
+  pins.forEach(pin=>{
+    pass += pin.dataset.value || ""
+  })
+  return pass
+}
+
+function checkPassword(){
+  const password = getPassword()
+  if(password.length !== pins.length) return
+  if(password === correctPassword){
+    unlockEffect()
+    setTimeout(()=>{
+      document.getElementById("login").style.display="none"
+      document.getElementById("secretPage").style.display="block"
+    },600)
+  }else{
+    document.querySelector(".pin-container").classList.add("shake")
+    setTimeout(()=>{
+      document.querySelector(".pin-container").classList.remove("shake")
+    },400)
+    pins.forEach(pin=>{
+      pin.value = ""
+      delete pin.dataset.value
+    })
+    pins[0].focus()
+  }
+}
+
+function unlockEffect(){
+
+  for(let i=0;i<20;i++){
+
+    const heart=document.createElement("div")
+
+    heart.innerHTML="💗"
+    heart.style.position="fixed"
+    heart.style.left=(40+Math.random()*20)+"vw"
+    heart.style.bottom="50vh"
+    heart.style.fontSize=(20+Math.random()*30)+"px"
+    heart.style.animation="floatUp 3s linear"
+
+    document.body.appendChild(heart)
+
+    setTimeout(()=>heart.remove(),3000)
+  }
 }
 
 /* นับวันที่คบกัน */
-
 const startDate = new Date("2026-02-14T00:00:00")
 
 function updateCounter(){
