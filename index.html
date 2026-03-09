@@ -12,164 +12,159 @@
 <style>
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Mali', cursive;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Mali', cursive;
 }
 
 body{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background: linear-gradient(-45deg,#ffd6e7,#fff1f6,#e0f7ff,#ffe6f2);
-background-size:400% 400%;
-animation: gradientBG 10s ease infinite;
-text-align:center;
-overflow:hidden;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:60px 0;
+    background: linear-gradient(-45deg,#ffd6e7,#fff1f6,#e0f7ff,#ffe6f2);
+    background-size:400% 400%;
+    animation: gradientBG 10s ease infinite;
+    text-align:center;
+    overflow-x:hidden;
 }
 
 @keyframes gradientBG{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
 }
 
 .container{
-background:white;
-padding:50px;
-border-radius:20px;
-box-shadow:0 10px 30px rgba(0,0,0,0.15);
-width:90%;
-max-width:700px;
-margin:auto;
-position:relative;
-z-index:1;
+    background:white;
+    padding:50px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+    width:90%;
+    max-width:700px;
+    margin:40px auto;
 }
 
 h1{
-color:#ff4d88;
-margin-bottom:10px;
+    color:#ff4d88;
+    margin-bottom:10px;
 }
 
 .hint{
-font-size:14px;
-color:#888;
-margin-bottom:20px;
+    font-size:14px;
+    color:#888;
+    margin-bottom:20px;
 }
 
 input{
-width:100%;
-padding:12px;
-border-radius:10px;
-border:1px solid #ddd;
-margin-bottom:15px;
-font-size:16px;
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #ddd;
+    margin-bottom:15px;
+    font-size:16px;
 }
 
 button{
-width:100%;
-padding:12px;
-border:none;
-border-radius:25px;
-background:#ff4d88;
-color:white;
-font-size:16px;
-cursor:pointer;
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:25px;
+    background:#ff4d88;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
 }
 
 button:hover{
-background:#ff2f73;
+    background:#ff2f73;
 }
 
 #error{
-color:red;
-margin-top:10px;
-display:none;
+    color:red;
+    margin-top:10px;
+    display:none;
 }
 
 #secretPage{
-display:none;
+    display:none;
 }
 
 .gallery img{
-width:100%;
-border-radius:12px;
-margin-top:15px;
-box-shadow:0 8px 20px rgba(0,0,0,0.15);
+    width:100%;
+    border-radius:12px;
+    margin-top:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
 }
 
 .message{
-margin-top:20px;
-line-height:1.9;
-font-size:18px;
+    margin-top:20px;
+    line-height:1.9;
+    font-size:18px;
 }
 
 .message h3{
-color:#ff4d88;
-margin-bottom:15px;
-font-size:22px;
+    color:#ff4d88;
+    margin-bottom:15px;
+    font-size:22px;
 }
 
 .counter{
-margin-top:15px;
-font-size:20px;
-color:#ff4d88;
-line-height:1.6;
+    margin-top:15px;
+    font-size:20px;
+    color:#ff4d88;
+    line-height:1.6;
 }
 
 /* กล่องของขวัญ */
 
 #giftBox img{
-width:120px;
-cursor:pointer;
-margin-top:10px;
-transition:transform 0.2s;
+    width:120px;
+    cursor:pointer;
+    margin-top:10px;
+    transition:transform 0.2s;
 }
 
 #giftBox img:hover{
-transform:scale(1.1);
+    transform:scale(1.1);
 }
 
 /* layer หัวใจด้านหลัง */
 
 #heartContainer{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-pointer-events:none;
-z-index:-1;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    z-index:-1;
 }
 
 .heart{
-position:absolute;
-bottom:-20px;
-animation:floatUp 6s linear infinite;
-opacity:0.5;
+    position:absolute;
+    bottom:-20px;
+    animation:floatUp 6s linear infinite;
 }
 
 @keyframes floatUp{
-from{
-transform:translateY(0);
-opacity:1;
-}
-to{
-transform:translateY(-100vh);
-opacity:0;
-}
+    from{
+        transform:translateY(0);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-100vh);
+        opacity:0;
+    }
 }
 
 </style>
-
 </head>
 
 <body>
-
 <div id="heartContainer"></div>
-
 
 <!-- หน้าใส่รหัส -->
 
@@ -177,9 +172,7 @@ opacity:0;
 
 <h1>🔒 หน้าลับ</h1>
 
-<p class="hint">
-คำใบ้: วันครบรอบไง 💗
-</p>
+<p class="hint"> คำใบ้: วันครบรอบ 💗</p>
 
 <input type="password" id="password" placeholder="ใส่รหัสที่นี่">
 
@@ -189,24 +182,20 @@ opacity:0;
 
 </div>
 
-
 <!-- หน้าเซอร์ไพรส์ -->
 
 <div class="container" id="secretPage">
-
 <h1>Happy 1 month Anniversary ❤️</h1>
 
 <div class="counter" id="counter"></div>
 
 <div class="gallery">
-
-<img src="photo1.jpg">
-<img src="photo2.jpg">
-
+    <img src="photo1.jpg">
+    <img src="photo2.jpg">
 </div>
 
 <div class="message">
-    <h3>💌 จดหมายถึงสุดหล่อของเค้า</h3> <br><br>
+    <h3>💌 จดหมายถึงสุดหล่อของเค้า</h3><br>
     ✨────────── 💌 ──────────✨ <br><br>
     เบบี้ เราอยู่ด้วยกันมาครบเดือนแน้ว ไวม้าย 🥺💞 <br><br>
     ขอบคุณที่อยู่ด้วยกันน้า กว่าจะได้คบกันไม่ง่ายเลย <br>
@@ -226,18 +215,11 @@ const correctPassword="14022026"
 const input=document.getElementById("password").value
 
 if(input===correctPassword){
-
-document.getElementById("login").style.display="none"
-document.getElementById("secretPage").style.display="block"
-
-}
-
-else{
-
-document.getElementById("error").style.display="block"
-
-}
-
+    document.getElementById("login").style.display="none"
+    document.getElementById("secretPage").style.display="block"
+ } else{
+    document.getElementById("error").style.display="block"
+    }
 }
 
 /* นับวันที่คบกัน */
@@ -245,29 +227,26 @@ document.getElementById("error").style.display="block"
 const startDate = new Date("2026-02-14T00:00:00")
 
 function updateCounter(){
+    const now = new Date()
+    const diff = now - startDate
 
-const now = new Date()
+    const seconds = Math.floor(diff / 1000)
+    const minutes = Math.floor(seconds / 60)
+    const hours = Math.floor(minutes / 60)
+    const days = Math.floor(hours / 24)
 
-const diff = now - startDate
+    const remainDays = days % 365
+    const remainHours = hours % 24
+    const remainMinutes = minutes % 60
+    const remainSeconds = seconds % 60
 
-const seconds = Math.floor(diff / 1000)
-const minutes = Math.floor(seconds / 60)
-const hours = Math.floor(minutes / 60)
-const days = Math.floor(hours / 24)
-
-const remainDays = days % 365
-const remainHours = hours % 24
-const remainMinutes = minutes % 60
-const remainSeconds = seconds % 60
-
-document.getElementById("counter").innerHTML =
-    "เราอยู่ด้วยกันมา<br>" +
-    remainDays + " วัน " +
-    remainHours + " ชั่วโมง " +
-    remainMinutes + " นาที " +
-    remainSeconds + " วินาที แย้ว💖"
-}
-
+    document.getElementById("counter").innerHTML =
+        "เราอยู่ด้วยกันมา<br>" +
+        remainDays + " วัน " +
+        remainHours + " ชั่วโมง " +
+        remainMinutes + " นาที " +
+        remainSeconds + " วินาที แย้ว💖"
+    }
 setInterval(updateCounter,1000)
 
 updateCounter()
@@ -276,19 +255,17 @@ updateCounter()
 /* หัวใจลอยด้านหลัง */
 
 function createHeart(){
+    const heart=document.createElement("div")
 
-const heart=document.createElement("div")
+    heart.className="heart"
+    heart.innerHTML="💜"
 
-heart.className="heart"
-heart.innerHTML="💜"
+    heart.style.left=Math.random()*100+"vw"
+    heart.style.fontSize=(15+Math.random()*25)+"px"
 
-heart.style.left=Math.random()*100+"vw"
-heart.style.fontSize=(15+Math.random()*25)+"px"
+    document.getElementById("heartContainer").appendChild(heart)
 
-document.getElementById("heartContainer").appendChild(heart)
-
-setTimeout(()=>heart.remove(),6000)
-
+    setTimeout(()=>heart.remove(),6000)
 }
 
 setInterval(createHeart,400)
