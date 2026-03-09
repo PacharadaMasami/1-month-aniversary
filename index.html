@@ -5,9 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>เซอร์ไพรส์เล็กๆ 💖</title>
+<title>Surprise 💖</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Mali:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
@@ -15,7 +15,7 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+font-family:'Mali', cursive;
 }
 
 body{
@@ -23,8 +23,17 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(135deg,#ffd6e7,#fff3f8);
+background: linear-gradient(-45deg,#ffd6e7,#fff1f6,#e0f7ff,#ffe6f2);
+background-size:400% 400%;
+animation: gradientBG 10s ease infinite;
 text-align:center;
+overflow:hidden;
+}
+
+@keyframes gradientBG{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }
 
 .container{
@@ -80,6 +89,10 @@ display:none;
 display:none;
 }
 
+#login{
+display:none;
+}
+
 .gallery img{
 width:100%;
 border-radius:12px;
@@ -93,11 +106,55 @@ line-height:1.7;
 font-size:16px;
 }
 
+/* กล่องของขวัญ */
+
+#giftBox img{
+width:120px;
+cursor:pointer;
+margin-top:10px;
+transition:transform 0.2s;
+}
+
+#giftBox img:hover{
+transform:scale(1.1);
+}
+
+/* หัวใจลอย */
+
+.heart{
+position:fixed;
+bottom:-20px;
+animation:floatUp 6s linear infinite;
+}
+
+@keyframes floatUp{
+from{
+transform:translateY(0);
+opacity:1;
+}
+to{
+transform:translateY(-100vh);
+opacity:0;
+}
+}
+
 </style>
 
 </head>
 
 <body>
+
+<!-- กล่องของขวัญ -->
+
+<div class="container" id="giftBox">
+
+<h1>มีอะไรให้เธอ 🎁</h1>
+
+<p>ลองกดเปิดดูสิ</p>
+
+<img src="gift.png" onclick="openGift()">
+
+</div>
 
 
 <!-- หน้าใส่รหัส -->
@@ -117,7 +174,6 @@ font-size:16px;
 <p id="error">รหัสไม่ถูก ลองอีกครั้งนะ 💔</p>
 
 </div>
-
 
 
 <!-- หน้าเซอร์ไพรส์ -->
@@ -148,16 +204,22 @@ font-size:16px;
 
 <script>
 
+function openGift(){
+
+document.getElementById("giftBox").style.display="none"
+document.getElementById("login").style.display="block"
+
+}
+
 function checkPassword(){
 
-const correctPassword="31052024"
+const correctPassword="14022026"
 
 const input=document.getElementById("password").value
 
 if(input===correctPassword){
 
 document.getElementById("login").style.display="none"
-
 document.getElementById("secretPage").style.display="block"
 
 }
@@ -170,8 +232,27 @@ document.getElementById("error").style.display="block"
 
 }
 
-</script>
+/* หัวใจลอย */
 
+function createHeart(){
+
+const heart=document.createElement("div")
+
+heart.className="heart"
+heart.innerHTML="💗"
+
+heart.style.left=Math.random()*100+"vw"
+heart.style.fontSize=(15+Math.random()*25)+"px"
+
+document.body.appendChild(heart)
+
+setTimeout(()=>heart.remove(),6000)
+
+}
+
+setInterval(createHeart,400)
+
+</script>
 
 </body>
 </html>
