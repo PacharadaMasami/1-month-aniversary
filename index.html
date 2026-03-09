@@ -91,10 +91,6 @@ display:none;
 display:none;
 }
 
-#login{
-display:none;
-}
-
 .gallery img{
 width:100%;
 border-radius:12px;
@@ -110,8 +106,9 @@ font-size:16px;
 
 .counter{
 margin-top:15px;
-font-size:18px;
+font-size:20px;
 color:#ff4d88;
+line-height:1.6;
 }
 
 /* กล่องของขวัญ */
@@ -164,18 +161,6 @@ opacity:0;
 
 <div id="heartContainer"></div>
 
-<!-- กล่องของขวัญ -->
-
-<div class="container" id="giftBox">
-
-<h1>มีอะไรให้เธอ 🎁</h1>
-
-<p>ลองกดเปิดดูสิ</p>
-
-<img src="gift.png" onclick="openGift()">
-
-</div>
-
 
 <!-- หน้าใส่รหัส -->
 
@@ -222,15 +207,7 @@ opacity:0;
 
 </div>
 
-
 <script>
-
-function openGift(){
-
-document.getElementById("giftBox").style.display="none"
-document.getElementById("login").style.display="block"
-
-}
 
 function checkPassword(){
 
@@ -254,20 +231,37 @@ document.getElementById("error").style.display="block"
 
 /* นับวันที่คบกัน */
 
-const startDate = new Date("2026-02-14")
+const startDate = new Date("2026-02-14T00:00:00")
 
 function updateCounter(){
 
 const now = new Date()
+
 const diff = now - startDate
-const days = Math.floor(diff / (1000*60*60*24))
+
+const seconds = Math.floor(diff / 1000)
+const minutes = Math.floor(seconds / 60)
+const hours = Math.floor(minutes / 60)
+const days = Math.floor(hours / 24)
+const years = Math.floor(days / 365)
+
+const remainDays = days % 365
+const remainHours = hours % 24
+const remainMinutes = minutes % 60
+const remainSeconds = seconds % 60
 
 document.getElementById("counter").innerHTML =
-"เราอยู่ด้วยกันมาแล้ว " + days + " วัน 💖"
+"เราอยู่ด้วยกันมาแล้ว<br>" +
+years + " ปี " +
+remainDays + " วัน " +
+remainHours + " ชั่วโมง " +
+remainMinutes + " นาที " +
+remainSeconds + " วินาที 💖"
 
 }
 
 setInterval(updateCounter,1000)
+
 updateCounter()
 
 
