@@ -111,24 +111,26 @@ button:hover{
     font-size:22px;
 }
 
+.divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    margin:20px 0;
+}
+
+.line{
+    width:120px;
+    height:2px;
+    background:#333;
+    border-radius:2px;
+}
+
 .counter{
     margin-top:15px;
     font-size:20px;
     color:#ff4d88;
     line-height:1.6;
-}
-
-/* กล่องของขวัญ */
-
-#giftBox img{
-    width:120px;
-    cursor:pointer;
-    margin-top:10px;
-    transition:transform 0.2s;
-}
-
-#giftBox img:hover{
-    transform:scale(1.1);
 }
 
 /* layer หัวใจด้านหลัง */
@@ -197,6 +199,93 @@ button:hover{
     100%{transform:translateX(0);}
 }
 
+/* Responsive สำหรับมือถือ */
+
+@media (max-width: 480px){
+
+    body{
+        padding:30px 10px;
+    }
+
+    .container{
+        max-width:100%;
+        padding:25px;
+    }
+
+    h1{
+        font-size:clamp(16px, 5vw, 26px);
+        line-height:1.4;
+        white-space:nowrap;
+    }
+
+    .hint{
+        font-size:12px;
+    }
+
+    .pin{
+        width:30px;
+        height:38px;
+        font-size: 6.6px;
+        border-radius:10px;
+    }
+
+    .pin-container{
+        display:flex;
+        justify-content:center;
+        gap:6px;
+        margin-bottom:20px;
+    }
+
+    input{
+        font-size:9px;
+        padding:10px;
+        border-radius:8px;
+    }
+
+    button{
+        font-size:14px;
+        padding:10px;
+    }
+
+    /* ข้อความหลัก */
+
+    .message{
+        font-size:clamp(12px, 1vw, 15px);;
+        line-height:1.9;
+        text-wrap:balance;
+        max-width:300px;
+        margin:0 auto;
+    }
+
+    .message h3{
+        font-size:17px;
+    }
+
+    .line{
+        width:70px;
+    }
+
+    /* ตัวนับเวลา */
+
+    .counter{
+        font-size:16px;
+        line-height:1.5;
+    }
+
+    /* รูปภาพ */
+
+    .gallery img{
+        margin-top:12px;
+    }
+
+    /* ปุ่ม */
+
+    button{
+        font-size:14px;
+        padding:11px;
+        border-radius:22px;
+    }
+}
 </style>
 </head>
 
@@ -212,14 +301,14 @@ button:hover{
 <p class="hint"> คำใบ้: วันครบรอบ - ปีคศนะ 💌</p>
 
 <div class="pin-container">
-  <input class="pin" maxlength="1">
-  <input class="pin" maxlength="1">
-  <input class="pin" maxlength="1">
-  <input class="pin" maxlength="1">
-  <input class="pin" maxlength="1">
-  <input class="pin" maxlength="1">
-  <input class="pin" maxlength="1">
-  <input class="pin" maxlength="1">
+  <input class="pin" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1">
+  <input class="pin" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1">
+  <input class="pin" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1">
+  <input class="pin" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1">
+  <input class="pin" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1">
+  <input class="pin" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1">
+  <input class="pin" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1">
+  <input class="pin" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1">
 </div>
 
 <button onclick="checkPassword()">เข้าสู่หน้าลับ</button>
@@ -231,9 +320,7 @@ button:hover{
 <!-- หน้าเซอร์ไพรส์ -->
 
 <div class="container" id="secretPage">
-<h1>Happy 1 month Anniversary ❤️</h1>
-
-<div class="counter" id="counter"></div>
+<h1>Happy&nbsp;1-month&nbsp;Anniversary&nbsp;❤️</h1>
 
 <div class="gallery">
     <img src="photo1.jpg">
@@ -241,13 +328,16 @@ button:hover{
 </div>
 
 <div class="message">
-    <h3>💌 จดหมายถึงสุดหล่อของเค้า</h3><br>
-    ✨────────── 💌 ──────────✨ <br><br>
-    เบบี้ เราอยู่ด้วยกันมาครบเดือนแน้ว ไวม้าย 🥺💞 <br><br>
+    <h3>💌 จดหมายถึงสุดหล่อของเค้า</h3>
+    <div class="counter" id="counter"></div><br>
+    <div class="divider">
+       ✨ <span class="line"></span> 💌 <span class="line"></span> ✨
+    </div> <br>
+    เบบี้ เราอยู่ด้วยกันมาครบเดือนแน้ว &nbsp;ไวม้าย&nbsp; 🥺💞 <br><br>
     ขอบคุณที่อยู่ด้วยกันน้า กว่าจะได้คบกันไม่ง่ายเลย <br>
-    วันที่เธอยอมคบกับเค้าคือบับ.. ชีวิตคอมพลีทสุดๆ <br><br>
+    เค้าตามจีบเธอมาตั้งเป็นปี ๆ  <br><br>
     เดือนแรกของเรามันอาจจะเป็นแค่จุดเริ่มต้นเล็กๆ <br>
-    แต่เค้าหวังว่าเราจะยังมีเดือนต่อๆไป แล้วก็ปีต่อๆไปเรื่อยๆเลย 🫧💞<br><br>
+    แต่เค้าหวังว่าเราจะยังมีเดือนต่อ ๆ ไป แล้วก็ปีต่อ ๆ ไปเรื่อย ๆ เลย 🫧💞<br><br>
     รักนะค้าบสุดหล่อของเค้า 🩷✨
 </div>
 
@@ -369,7 +459,7 @@ function updateCounter(){
         remainDays + " วัน " +
         remainHours + " ชั่วโมง " +
         remainMinutes + " นาที " +
-        remainSeconds + " วินาที แย้ว💖"
+        remainSeconds + " วินาที แย้ว 💖"
     }
 setInterval(updateCounter,1000)
 
@@ -382,7 +472,7 @@ function createHeart(){
     const heart=document.createElement("div")
 
     heart.className="heart"
-    heart.innerHTML="💜"
+    heart.innerHTML="🩷"
 
     heart.style.left=Math.random()*100+"vw"
     heart.style.fontSize=(15+Math.random()*25)+"px"
