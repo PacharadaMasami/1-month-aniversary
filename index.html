@@ -42,6 +42,8 @@ padding:40px;
 border-radius:15px;
 box-shadow:0 10px 30px rgba(0,0,0,0.15);
 max-width:420px;
+position:relative;
+z-index:10;
 }
 
 h1{
@@ -106,6 +108,12 @@ line-height:1.7;
 font-size:16px;
 }
 
+.counter{
+margin-top:15px;
+font-size:18px;
+color:#ff4d88;
+}
+
 /* กล่องของขวัญ */
 
 #giftBox img{
@@ -119,10 +127,20 @@ transition:transform 0.2s;
 transform:scale(1.1);
 }
 
-/* หัวใจลอย */
+/* layer หัวใจด้านหลัง */
+
+#heartContainer{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+z-index:0;
+}
 
 .heart{
-position:fixed;
+position:absolute;
 bottom:-20px;
 animation:floatUp 6s linear infinite;
 }
@@ -143,6 +161,8 @@ opacity:0;
 </head>
 
 <body>
+
+<div id="heartContainer"></div>
 
 <!-- กล่องของขวัญ -->
 
@@ -182,6 +202,8 @@ opacity:0;
 
 <h1>Happy Anniversary ❤️</h1>
 
+<div class="counter" id="counter"></div>
+
 <div class="gallery">
 
 <img src="photo1.jpg">
@@ -201,7 +223,6 @@ opacity:0;
 </div>
 
 
-
 <script>
 
 function openGift(){
@@ -214,7 +235,6 @@ document.getElementById("login").style.display="block"
 function checkPassword(){
 
 const correctPassword="14022026"
-
 const input=document.getElementById("password").value
 
 if(input===correctPassword){
@@ -232,7 +252,26 @@ document.getElementById("error").style.display="block"
 
 }
 
-/* หัวใจลอย */
+/* นับวันที่คบกัน */
+
+const startDate = new Date("2026-02-14")
+
+function updateCounter(){
+
+const now = new Date()
+const diff = now - startDate
+const days = Math.floor(diff / (1000*60*60*24))
+
+document.getElementById("counter").innerHTML =
+"เราอยู่ด้วยกันมาแล้ว " + days + " วัน 💖"
+
+}
+
+setInterval(updateCounter,1000)
+updateCounter()
+
+
+/* หัวใจลอยด้านหลัง */
 
 function createHeart(){
 
@@ -244,7 +283,7 @@ heart.innerHTML="💗"
 heart.style.left=Math.random()*100+"vw"
 heart.style.fontSize=(15+Math.random()*25)+"px"
 
-document.body.appendChild(heart)
+document.getElementById("heartContainer").appendChild(heart)
 
 setTimeout(()=>heart.remove(),6000)
 
