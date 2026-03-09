@@ -203,8 +203,8 @@ opacity:0;
 </div>
 
 <div class="message">
-    <h3>💌 จดหมายถึงสุดหล่อของเค้า</h3> <br>
-    ✨────────── 💌 ──────────✨ <br>
+    <h3>💌 จดหมายถึงสุดหล่อของเค้า</h3> <br><br>
+    ✨────────── 💌 ──────────✨ <br><br>
     เบบี้ เราอยู่ด้วยกันมาครบเดือนแน้ว ไวม้าย 🥺💞 <br><br>
     ขอบคุณที่อยู่ด้วยกันน้า กว่าจะได้คบกันไม่ง่ายเลย <br>
     วันที่เธอยอมคบกับเค้าคือบับ.. ชีวิตคอมพลีทสุดๆ <br><br>
@@ -258,13 +258,11 @@ const remainMinutes = minutes % 60
 const remainSeconds = seconds % 60
 
 document.getElementById("counter").innerHTML =
-"เราอยู่ด้วยกันมาแล้ว<br>" +
-years + " ปี " +
-remainDays + " วัน " +
-remainHours + " ชั่วโมง " +
-remainMinutes + " นาที " +
-remainSeconds + " วินาที 💖"
-
+    "เราอยู่ด้วยกันมา<br>" +
+    remainDays + " วัน " +
+    remainHours + " ชั่วโมง " +
+    remainMinutes + " นาที " +
+    remainSeconds + " วินาที แย้ว💖"
 }
 
 setInterval(updateCounter,1000)
@@ -279,7 +277,7 @@ function createHeart(){
 const heart=document.createElement("div")
 
 heart.className="heart"
-heart.innerHTML="💗"
+heart.innerHTML="💜"
 
 heart.style.left=Math.random()*100+"vw"
 heart.style.fontSize=(15+Math.random()*25)+"px"
