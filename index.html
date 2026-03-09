@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>เซอร์ไพรส์เล็กๆ 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ffd6e7,#fff3f8);
+text-align:center;
+}
+
+.container{
+background:white;
+padding:40px;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
+max-width:420px;
+}
+
+h1{
+color:#ff4d88;
+margin-bottom:10px;
+}
+
+.hint{
+font-size:14px;
+color:#888;
+margin-bottom:20px;
+}
+
+input{
+width:100%;
+padding:12px;
+border-radius:10px;
+border:1px solid #ddd;
+margin-bottom:15px;
+font-size:16px;
+}
+
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:25px;
+background:#ff4d88;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#ff2f73;
+}
+
+#error{
+color:red;
+margin-top:10px;
+display:none;
+}
+
+#secretPage{
+display:none;
+}
+
+.gallery img{
+width:100%;
+border-radius:12px;
+margin-top:15px;
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.message{
+margin-top:20px;
+line-height:1.7;
+font-size:16px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- หน้าใส่รหัส -->
+
+<div class="container" id="login">
+
+<h1>🔒 หน้าลับ</h1>
+
+<p class="hint">
+คำใบ้: วันที่สำคัญที่สุดของเรา 💗
+</p>
+
+<input type="password" id="password" placeholder="ใส่รหัสที่นี่">
+
+<button onclick="checkPassword()">เข้าสู่หน้าลับ</button>
+
+<p id="error">รหัสไม่ถูก ลองอีกครั้งนะ 💔</p>
+
+</div>
+
+
+
+<!-- หน้าเซอร์ไพรส์ -->
+
+<div class="container" id="secretPage">
+
+<h1>Happy Anniversary ❤️</h1>
+
+<div class="gallery">
+
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+
+</div>
+
+<div class="message">
+
+ขอบคุณที่เข้ามาในชีวิตกันนะ  
+ทุกช่วงเวลาที่ได้อยู่ด้วยกันเป็นความทรงจำที่ดีมากสำหรับเรา  
+
+หวังว่าเราจะได้สร้างความทรงจำดี ๆ แบบนี้ไปอีกนานเลย 💖  
+
+</div>
+
+</div>
+
+
+
+<script>
+
+function checkPassword(){
+
+const correctPassword="31052024"
+
+const input=document.getElementById("password").value
+
+if(input===correctPassword){
+
+document.getElementById("login").style.display="none"
+
+document.getElementById("secretPage").style.display="block"
+
+}
+
+else{
+
+document.getElementById("error").style.display="block"
+
+}
+
+}
+
+</script>
+
+
+</body>
+</html>
