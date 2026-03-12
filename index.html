@@ -100,6 +100,18 @@ button:hover{
     margin-bottom: 15px;
 }
 
+.title{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:6px;
+    text-align:center;
+}
+
+.title-heart{
+    font-size:0.7em;
+}
+
 .message{
     margin-top:20px;
     line-height:1.9;
@@ -248,6 +260,14 @@ button:hover{
         padding:10px;
     }
 
+    .title{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:6px;
+        white-space:nowrap;
+    }
+
     /* ข้อความหลัก */
 
     .message{
@@ -321,7 +341,10 @@ button:hover{
 <!-- หน้าเซอร์ไพรส์ -->
 
 <div class="container" id="secretPage">
-<h1>Happy&nbsp;1-month&nbsp;Anniversary&nbsp;♡</h1>
+<h1 class="title">
+  Happy 1-month Anniversary
+  <span class="title-heart"> ❤️</span>
+</h1>
 
 <div class="gallery">
     <img src="photo1.jpg">
