@@ -1,0 +1,389 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Mali', cursive;
+}
+
+#startScreen{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:24px;
+    color:#ff4d88;
+    z-index:999;
+    cursor:pointer;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:60px 0;
+    background: linear-gradient(-45deg,#ffd6e7,#fff1f6,#e0f7ff,#ffe6f2);
+    background-size:400% 400%;
+    animation: gradientBG 10s ease infinite;
+    text-align:center;
+    overflow-x:hidden;
+}
+
+@keyframes gradientBG{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.container{
+    background:white;
+    padding:50px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+    width:90%;
+    max-width:700px;
+    margin:40px auto;
+}
+
+h1{
+    color:#ff4d88;
+    margin-bottom:10px;
+}
+
+.hint{
+    font-size:14px;
+    color:#888;
+    margin-bottom:20px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #ddd;
+    margin-bottom:15px;
+    font-size:16px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:25px;
+    background:#ff4d88;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    border: 2px solid white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+button:hover{
+    background:#ff2f73;
+}
+
+.back-circle{
+  position: fixed;
+  top: 20px;
+  left: 20px;
+
+  width: 55px;
+  height: 55px;
+
+  border-radius: 50%;
+  border: none;
+
+  background: #ff4d88;
+  color: white;
+
+  font-size: 22px; /* 👈 สำคัญ */
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  transition: 0.2s;
+
+  z-index: 999;
+}
+
+.back-circle:hover{
+  transform: scale(1.1);
+  background: #ff2f73;
+}
+
+#error{
+    color:red;
+    margin-top:10px;
+    display:none;
+}
+
+#secretPage{
+    display:none;
+}
+
+.gallery img{
+    width:100%;
+    border-radius:12px;
+    margin-top:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+    margin-bottom: 15px;
+}
+
+.title{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:6px;
+    text-align:center;
+}
+
+.title-heart{
+    font-size:0.7em;
+}
+
+.message{
+    margin-top:20px;
+    line-height:1.9;
+    font-size:18px;
+}
+
+.message h3{
+    color:#ff4d88;
+    margin-bottom:15px;
+    font-size:22px;
+}
+
+.divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    margin:20px 0;
+}
+
+.line{
+    width:120px;
+    height:2px;
+    background:#333;
+    border-radius:2px;
+}
+
+.counter{
+    margin-top:15px;
+    font-size:20px;
+    color:#ff4d88;
+    line-height:1.6;
+}
+
+#chatBox{
+  transition: 0.2s;
+}
+
+.chat-bubble{
+  background:#ffe4ec;
+  color:#333;
+
+  padding:14px 18px;              /* ⬅️ เพิ่ม breathing space */
+  border-radius:16px;
+
+  margin:10px auto;
+  max-width:280px;               /* ⬅️ กว้างขึ้นนิดนึง */
+
+  font-size:15px;
+  line-height:1.7;               /* ⬅️ สำคัญมาก */
+  letter-spacing:0.2px;          /* ⬅️ กันตัวอักษรติด */
+
+  text-align:left;               /* ⬅️ อ่านง่ายขึ้นเยอะ */
+
+  animation:fadeIn 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.no-break{
+  white-space: nowrap;
+  display: inline-block; /* 👈 กันแตกแน่นขึ้น */
+}
+
+#myImg{
+  width:200px;
+  height:200px;        /* ⬅️ สำคัญ */
+  object-fit:cover;    /* ⬅️ ครอปให้พอดี */
+  border-radius:20px;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* layer หัวใจด้านหลัง */
+
+#heartContainer{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    z-index:-1;
+}
+
+.heart{
+    position:absolute;
+    bottom:-20px;
+    animation:floatUp 6s linear infinite;
+}
+
+@keyframes floatUp{
+    from{
+        transform:translateY(0);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-100vh);
+        opacity:0;
+    }
+}
+
+.pin-container{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.pin{
+    width:55px;
+    height:60px;
+    border-radius:16px;
+    border:2px solid #ddd;
+    font-size:24px;
+    text-align:center;
+    transition:0.2s;
+}
+
+.pin:focus{
+    outline:none;
+    border-color:#ff4d88;
+    box-shadow:0 0 10px rgba(255,77,136,0.3);
+}
+
+/* shake animation */
+
+.shake{
+    animation:shake 0.4s;
+}
+
+@keyframes shake{
+    0%{transform:translateX(0);}
+    25%{transform:translateX(-5px);}
+    50%{transform:translateX(5px);}
+    75%{transform:translateX(-5px);}
+    100%{transform:translateX(0);}
+}
+
+/* Responsive สำหรับมือถือ */
+
+@media (max-width: 480px){
+
+    body{
+        padding:30px 10px;
+    }
+
+    .container{
+        max-width:100%;
+        padding:25px;
+    }
+
+    h1{
+        font-size:clamp(16px, 5vw, 26px);
+        line-height:1.4;
+        white-space:nowrap;
+    }
+
+    .hint{
+        font-size:12px;
+    }
+
+    .pin{
+        width:30px;
+        height:38px;
+        font-size: 6.6px;
+        border-radius:10px;
+    }
+
+    .pin-container{
+        display:flex;
+        justify-content:center;
+        gap:6px;
+        margin-bottom:20px;
+    }
+
+    input{
+        font-size:9px;
+        padding:10px;
+        border-radius:8px;
+    }
+
+    button{
+        font-size:14px;
+        padding:10px;
+    }
+
+    .title{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:6px;
+        white-space:nowrap;
+    }
+
+    /* ข้อความหลัก */
+
+    .message{
+        font-size:clamp(12px, 1vw, 15px);;
+        line-height:1.9;
+        text-wrap:balance;
+        max-width:300px;
+        margin:0 auto;
+    }
+
+    .message h3{
+        font-size:17px;
+    }
+
+    .line{
+        width:70px;
+    }
+
+    /* ตัวนับเวลา */
+
+    .counter{
+        font-size:16px;
+        line-height:1.5;
+    }
+
+    /* รูปภาพ */
+
+    .gallery img{
+        margin-top:12px;
+    }
+
+    /* ปุ่ม */
+
+    button{
+        font-size:14px;
+        padding:11px;
+        border-radius:22px;
+    }
+}

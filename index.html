@@ -8,325 +8,12 @@
 <title>Surprise 💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Mali:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Mali', cursive;
-}
-
-#startScreen{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:24px;
-    color:#ff4d88;
-    z-index:999;
-    cursor:pointer;
-}
-
-body{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:60px 0;
-    background: linear-gradient(-45deg,#ffd6e7,#fff1f6,#e0f7ff,#ffe6f2);
-    background-size:400% 400%;
-    animation: gradientBG 10s ease infinite;
-    text-align:center;
-    overflow-x:hidden;
-}
-
-@keyframes gradientBG{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
-}
-
-.container{
-    background:white;
-    padding:50px;
-    border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.15);
-    width:90%;
-    max-width:700px;
-    margin:40px auto;
-}
-
-h1{
-    color:#ff4d88;
-    margin-bottom:10px;
-}
-
-.hint{
-    font-size:14px;
-    color:#888;
-    margin-bottom:20px;
-}
-
-input{
-    width:100%;
-    padding:12px;
-    border-radius:10px;
-    border:1px solid #ddd;
-    margin-bottom:15px;
-    font-size:16px;
-}
-
-button{
-    width:100%;
-    padding:12px;
-    border:none;
-    border-radius:25px;
-    background:#ff4d88;
-    color:white;
-    font-size:16px;
-    cursor:pointer;
-}
-
-button:hover{
-    background:#ff2f73;
-}
-
-#error{
-    color:red;
-    margin-top:10px;
-    display:none;
-}
-
-#secretPage{
-    display:none;
-}
-
-.gallery img{
-    width:100%;
-    border-radius:12px;
-    margin-top:15px;
-    box-shadow:0 8px 20px rgba(0,0,0,0.15);
-    margin-bottom: 15px;
-}
-
-.title{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:6px;
-    text-align:center;
-}
-
-.title-heart{
-    font-size:0.7em;
-}
-
-.message{
-    margin-top:20px;
-    line-height:1.9;
-    font-size:18px;
-}
-
-.message h3{
-    color:#ff4d88;
-    margin-bottom:15px;
-    font-size:22px;
-}
-
-.divider{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:12px;
-    margin:20px 0;
-}
-
-.line{
-    width:120px;
-    height:2px;
-    background:#333;
-    border-radius:2px;
-}
-
-.counter{
-    margin-top:15px;
-    font-size:20px;
-    color:#ff4d88;
-    line-height:1.6;
-}
-
-/* layer หัวใจด้านหลัง */
-
-#heartContainer{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    pointer-events:none;
-    z-index:-1;
-}
-
-.heart{
-    position:absolute;
-    bottom:-20px;
-    animation:floatUp 6s linear infinite;
-}
-
-@keyframes floatUp{
-    from{
-        transform:translateY(0);
-        opacity:1;
-    }
-    to{
-        transform:translateY(-100vh);
-        opacity:0;
-    }
-}
-
-.pin-container{
-    display:flex;
-    justify-content:center;
-    gap:12px;
-    margin-bottom:20px;
-}
-
-.pin{
-    width:55px;
-    height:60px;
-    border-radius:16px;
-    border:2px solid #ddd;
-    font-size:24px;
-    text-align:center;
-    transition:0.2s;
-}
-
-.pin:focus{
-    outline:none;
-    border-color:#ff4d88;
-    box-shadow:0 0 10px rgba(255,77,136,0.3);
-}
-
-/* shake animation */
-
-.shake{
-    animation:shake 0.4s;
-}
-
-@keyframes shake{
-    0%{transform:translateX(0);}
-    25%{transform:translateX(-5px);}
-    50%{transform:translateX(5px);}
-    75%{transform:translateX(-5px);}
-    100%{transform:translateX(0);}
-}
-
-/* Responsive สำหรับมือถือ */
-
-@media (max-width: 480px){
-
-    body{
-        padding:30px 10px;
-    }
-
-    .container{
-        max-width:100%;
-        padding:25px;
-    }
-
-    h1{
-        font-size:clamp(16px, 5vw, 26px);
-        line-height:1.4;
-        white-space:nowrap;
-    }
-
-    .hint{
-        font-size:12px;
-    }
-
-    .pin{
-        width:30px;
-        height:38px;
-        font-size: 6.6px;
-        border-radius:10px;
-    }
-
-    .pin-container{
-        display:flex;
-        justify-content:center;
-        gap:6px;
-        margin-bottom:20px;
-    }
-
-    input{
-        font-size:9px;
-        padding:10px;
-        border-radius:8px;
-    }
-
-    button{
-        font-size:14px;
-        padding:10px;
-    }
-
-    .title{
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        gap:6px;
-        white-space:nowrap;
-    }
-
-    /* ข้อความหลัก */
-
-    .message{
-        font-size:clamp(12px, 1vw, 15px);;
-        line-height:1.9;
-        text-wrap:balance;
-        max-width:300px;
-        margin:0 auto;
-    }
-
-    .message h3{
-        font-size:17px;
-    }
-
-    .line{
-        width:70px;
-    }
-
-    /* ตัวนับเวลา */
-
-    .counter{
-        font-size:16px;
-        line-height:1.5;
-    }
-
-    /* รูปภาพ */
-
-    .gallery img{
-        margin-top:12px;
-    }
-
-    /* ปุ่ม */
-
-    button{
-        font-size:14px;
-        padding:11px;
-        border-radius:22px;
-    }
-}
-</style>
 </head>
 
 <body>
+
 <div id="heartContainer"></div>
 
 <div id="startScreen">
@@ -334,7 +21,6 @@ button:hover{
 </div>
 
 <!-- หน้าใส่รหัส -->
-
 <div class="container" id="login">
 
 <h1>🔒 หน้าลับ</h1>
@@ -359,48 +45,34 @@ button:hover{
 </div>
 
 <!-- หน้าเซอร์ไพรส์ -->
+<div class="container" id="secretPage" style="display:none;">
 
-<div class="container" id="secretPage">
-<h1 class="title">
-  Happy 1-month Anniversary
-  <span class="title-heart"> ❤️</span>
-</h1>
+  <div id="mainCounter" style="margin-bottom:30px;font-size:20px; color:#ff4d88;"></div>
 
-<div class="gallery">
-    <img src="IMG_4241.png">
-    <img src="IMG_4242.png">
-</div>
+  <!-- TAB -->
+  <div id="tabBar" style="display:flex; gap:10px; justify-content:center;">
+    <button onclick="switchTab('1-month-ani')"> 1-Month Anniversary 🤍</button>
+    <button onclick="switchTab('when-sad')"> กำลังใจมาส่งแย้ว 🥺🫶 <span style="color:red;">●</span></button>
+  </div>
 
-<div class="message">
-    <h3>💌 จดหมายถึงสุดหล่อของเค้า</h3>
-    <div class="counter" id="counter"></div><br>
-    <div class="divider">
-       ✨ <span class="line"></span> 💌 <span class="line"></span> ✨
-    </div> <br>
-    เบบี้ เราอยู่ด้วยกันมาครบเดือนแน้ว &nbsp;ไวม้าย&nbsp; 🥺💞 <br><br>
-    ขอบคุณที่อยู่ด้วยกันน้า กว่าจะได้คบกันไม่ง่ายเลย <br>
-    เค้าตามจีบเธอมาตั้งเป็นปี ๆ  <br><br>
-    เดือนแรกของเรามันอาจจะเป็นแค่จุดเริ่มต้นเล็กๆ <br>
-    แต่เค้าหวังว่าเราจะยังมีเดือนต่อ ๆ ไป แล้วก็ปีต่อ ๆ ไปเรื่อย ๆ เลย 🫧💞<br><br>
-    รักนะค้าบสุดหล่อของเค้า 🩷✨
-</div>
+  <!-- CONTENT LOAD HERE -->
+  <div id="contentArea"></div>
 
 </div>
 
 <script>
 
-const startScreen = document.getElementById("startScreen")
+/* start screen */
+document.getElementById("startScreen").onclick = () => {
+  document.getElementById("startScreen").style.display = "none"
+}
 
-startScreen.addEventListener("click", () => {
-    startScreen.style.display = "none"
-})
-
+/* PIN */
 const pins = document.querySelectorAll(".pin")
 const correctPassword = "14022026"
 
 pins.forEach((pin, index) => {
 
-  // พิมพ์ตัวเลข
   pin.addEventListener("input", (e) => {
 
     const value = e.target.value
@@ -410,20 +82,16 @@ pins.forEach((pin, index) => {
       return
     }
 
-    // แสดงหัวใจ
     e.target.value = "♡"
     e.target.dataset.value = value
 
-    // ไปช่องถัดไป
     if(index < pins.length - 1){
       pins[index+1].focus()
     }
 
     checkPassword()
-
   })
 
-  // รองรับการกดลบ
   pin.addEventListener("keydown", (e) => {
     if(e.key === "Backspace"){
       if(pin.value === "" && index > 0){
@@ -449,6 +117,7 @@ function getPassword(){
 function checkPassword(){
   const password = getPassword()
   if(password.length !== pins.length) return
+
   if(password === correctPassword){
     unlockEffect()
     setTimeout(()=>{
@@ -460,79 +129,189 @@ function checkPassword(){
     setTimeout(()=>{
       document.querySelector(".pin-container").classList.remove("shake")
     },400)
+
     pins.forEach(pin=>{
       pin.value = ""
       delete pin.dataset.value
     })
+
     pins[0].focus()
   }
 }
 
+/* TAB LOAD */
+function switchTab(tab){
+
+  let file = ""
+
+  if(tab === "1-month-ani"){
+    file = "1-month-ani.html"
+  }else if(tab === "when-sad"){
+    file = "when-sad.html"
+  }
+
+  document.getElementById("mainCounter").style.display = "none"
+  document.getElementById("tabBar").style.display = "none"
+
+  fetch(file)
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("contentArea").innerHTML = data
+    })
+}
+
+/* Go back */
+function goBack(){
+  document.getElementById("contentArea").innerHTML = ""
+
+  document.getElementById("mainCounter").style.display = "block"
+  document.getElementById("tabBar").style.display = "flex"
+}
+
+/* heart effect */
 function unlockEffect(){
-
   for(let i=0;i<20;i++){
-
     const heart=document.createElement("div")
-
     heart.innerHTML="💗"
     heart.style.position="fixed"
     heart.style.left=(40+Math.random()*20)+"vw"
     heart.style.bottom="50vh"
     heart.style.fontSize=(20+Math.random()*30)+"px"
     heart.style.animation="floatUp 3s linear"
-
     document.body.appendChild(heart)
-
     setTimeout(()=>heart.remove(),3000)
   }
 }
 
-/* นับวันที่คบกัน */
+/* background hearts */
+function createHeart(){
+  const heart=document.createElement("div")
+  heart.className="heart"
+  heart.innerHTML="🩷"
+  heart.style.left=Math.random()*100+"vw"
+  heart.style.fontSize=(15+Math.random()*25)+"px"
+  document.getElementById("heartContainer").appendChild(heart)
+  setTimeout(()=>heart.remove(),6000)
+}
+setInterval(createHeart,400)
+
+/* Time counter */
 const startDate = new Date("2026-02-14T00:00:00")
 
 function updateCounter(){
-    const now = new Date()
-    const diff = now - startDate
+  const now = new Date()
+  const diff = now - startDate
 
-    const seconds = Math.floor(diff / 1000)
-    const minutes = Math.floor(seconds / 60)
-    const hours = Math.floor(minutes / 60)
-    const days = Math.floor(hours / 24)
+  const seconds = Math.floor(diff / 1000)
+  const minutes = Math.floor(seconds / 60)
+  const hours = Math.floor(minutes / 60)
+  const days = Math.floor(hours / 24)
 
-    const remainDays = days % 365
-    const remainHours = hours % 24
-    const remainMinutes = minutes % 60
-    const remainSeconds = seconds % 60
+  const remainHours = hours % 24
+  const remainMinutes = minutes % 60
+  const remainSeconds = seconds % 60
 
-    document.getElementById("counter").innerHTML =
-        "เราอยู่ด้วยกันมา<br>" +
-        remainDays + " วัน " +
-        remainHours + " ชั่วโมง " +
-        remainMinutes + " นาที " +
-        remainSeconds + " วินาที แย้ว 💖"
-    }
-setInterval(updateCounter,1000)
+  document.getElementById("mainCounter").innerHTML =
+    "ตั้งแต่วันที่เรามีกัน 🥺💞 <br><br>" +
+    days + " วัน " +
+    remainHours + " ชั่วโมง " +
+    remainMinutes + " นาที " +
+    remainSeconds + " วินาที 💖"
+}
 
+setInterval(updateCounter, 1000)
 updateCounter()
 
 
-/* หัวใจลอยด้านหลัง */
+let frame = 0
+let interval
 
-function createHeart(){
-    const heart=document.createElement("div")
+const messages = [
+  "โอ๋ๆนะคนเก่ง ไม่เป็นไรน้า คะแนนมันไม่ได้บอกว่าเธอเก่งแค่ไหน เค้าภูมิใจในตัวเธอมากนะคะ (อย่าเถียงเค้า ก็เค้าภูมิใจในตัวเธออ่ะ)<span class='no-break'>&nbsp;🤍</span>",
+  "ถึงอาจารย์จะไม่ใจดีกับเธอก็ไม่เป็นไรค่ะ เดี๋ยวเค้าไปตีอาจารย์ให้นะคะ ข้อหาที่มาแกล้งแฟนเค้า<span class='no-break'>&nbsp;😤</span>",
+  "คะแนนอาจจะไม่ดี แต่แฟนเธอนี่ดีมากนะ (หมายถึงเค้าเอง<span class='no-break'>&nbsp;😏)</span>",
+  "วันนี้เหนื่อยก็พักก่อนนะ แล้วค่อยไปต่อ เค้าจะอยู่ข้างๆเธอตลอดเลยนะคะ<span class='no-break'>&nbsp;🥺</span>",
+  "ต่อให้เธอผิดหวังกับตัวเอง เค้าก็ยังภูมิใจในตัวเธออยู่ดีนะคะ ไม่เกี่ยวว่่าคะแนนจะมากจะน้อยเลย เพราะเธอเก่งที่สุดในสายตาเค้าตลอด<span class='no-break'>&nbsp;🫶🏻</span>",
+  "เธออาจจะมองว่ามันยังไม่ดีพอ แต่สำหรับเค้า เธอทำได้ดีมากแล้วนะคะ อย่าลืมให้เครดิตตัวเองด้วยนะคะ ไม่งั้นเค้าจะตีจริงๆด้วย<span class='no-break'>&nbsp;🫂</span>",
+  "ถ้าวันนี้มันทำให้เธอเสียความมั่นใจ เค้าอยากขอให้เธอค่อยๆกลับมาเชื่อในตัวเองอีกครั้งนะคะ เพราะเธอเก่งมากจริงๆ<span class='no-break'>&nbsp;🤍</span>"
+]
 
-    heart.className="heart"
-    heart.innerHTML="🩷"
+const images = [
+  "when-sad-img/กลจ1.jpg",
+  "when-sad-img/กลจ2.jpg",
+  "when-sad-img/กลจ3.jpg",
+  "when-sad-img/กลจ4.jpg",
+  "when-sad-img/กลจ5.jpg",
+  "when-sad-img/กลจ6.jpg",
+  "when-sad-img/กลจ7.jpg"
+]
 
-    heart.style.left=Math.random()*100+"vw"
-    heart.style.fontSize=(15+Math.random()*25)+"px"
+// 🎡 เริ่มหมุน
+function startSpin(){
+  clearInterval(interval)
+  isSpinning = true
 
-    document.getElementById("heartContainer").appendChild(heart)
-
-    setTimeout(()=>heart.remove(),6000)
+  interval = setInterval(()=>{
+    frame = Math.floor(Math.random() * images.length)
+    const img = document.getElementById("myImg")
+    if(img) img.src = images[frame]
+  }, 120)
 }
 
-setInterval(createHeart,400)
+function stopAndSend(){
+
+  const btn = document.getElementById("btn")
+  const hint = document.getElementById("retryHint")
+
+  if(isSpinning){
+
+    // ⛔ หยุด
+    clearInterval(interval)
+    isSpinning = false
+
+    const chatBox = document.getElementById("chatBox")
+    if(!chatBox) return
+
+    const bubble = document.createElement("div")
+    bubble.className = "chat-bubble"
+    bubble.innerHTML = messages[frame]
+
+    chatBox.appendChild(bubble)
+
+    if(typeof createHeart === "function"){
+      createHeart()
+      createHeart()
+    }
+
+    // 👇 แสดง hint
+    hint.style.display = "block"
+
+    btn.innerText = "กดสุ่มใหม่ 🔄"
+
+  }else{
+
+  // ▶️ เริ่มใหม่
+  startSpin()
+
+  // 👇 เคลียร์ข้อความ
+  const chatBox = document.getElementById("chatBox")
+  chatBox.style.opacity = "0"
+
+  setTimeout(()=>{
+    chatBox.innerHTML = ""
+    chatBox.style.opacity = "1"
+  }, 200)
+
+  // ซ่อน hint
+  hint.style.display = "none"
+
+  btn.innerText = "กดหยุดรับกำลังใจ 🎯"
+}
+}
+
+// 🚀 เริ่มทันทีตอนโหลด fragment
+setTimeout(startSpin, 50)
+
 
 </script>
 
